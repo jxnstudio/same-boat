@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1007871078173",
+    "firebase_url": "https://same-boat-app-default-rtdb.firebaseio.com",
+    "project_id": "same-boat-app",
+    "storage_bucket": "same-boat-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007871078173:android:dca68c98b4fe0f37d43bf4",
+        "android_client_info": {
+          "package_name": "com.jxnstudio.same_boat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007871078173-re2js46fnsgtr51iu9mf9jtig00fpu9a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd7BOqAB-RRgRy8Or2bQDnlqs0lgzX_as"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007871078173-re2js46fnsgtr51iu9mf9jtig00fpu9a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
