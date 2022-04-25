@@ -8,6 +8,8 @@ part of 'internal_user.sg.dart';
 
 class _$InternalUser extends InternalUser {
   @override
+  final String id;
+  @override
   final String username;
   @override
   final String pfpId;
@@ -15,7 +17,10 @@ class _$InternalUser extends InternalUser {
   factory _$InternalUser([void Function(InternalUserBuilder)? updates]) =>
       (new InternalUserBuilder()..update(updates)).build();
 
-  _$InternalUser._({required this.username, required this.pfpId}) : super._() {
+  _$InternalUser._(
+      {required this.id, required this.username, required this.pfpId})
+      : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, 'InternalUser', 'id');
     BuiltValueNullFieldError.checkNotNull(username, 'InternalUser', 'username');
     BuiltValueNullFieldError.checkNotNull(pfpId, 'InternalUser', 'pfpId');
   }
@@ -31,18 +36,21 @@ class _$InternalUser extends InternalUser {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is InternalUser &&
+        id == other.id &&
         username == other.username &&
         pfpId == other.pfpId;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, username.hashCode), pfpId.hashCode));
+    return $jf(
+        $jc($jc($jc(0, id.hashCode), username.hashCode), pfpId.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('InternalUser')
+          ..add('id', id)
           ..add('username', username)
           ..add('pfpId', pfpId))
         .toString();
@@ -52,6 +60,10 @@ class _$InternalUser extends InternalUser {
 class InternalUserBuilder
     implements Builder<InternalUser, InternalUserBuilder> {
   _$InternalUser? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
   String? _username;
   String? get username => _$this._username;
@@ -66,6 +78,7 @@ class InternalUserBuilder
   InternalUserBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _id = $v.id;
       _username = $v.username;
       _pfpId = $v.pfpId;
       _$v = null;
@@ -88,6 +101,7 @@ class InternalUserBuilder
   _$InternalUser build() {
     final _$result = _$v ??
         new _$InternalUser._(
+            id: BuiltValueNullFieldError.checkNotNull(id, 'InternalUser', 'id'),
             username: BuiltValueNullFieldError.checkNotNull(
                 username, 'InternalUser', 'username'),
             pfpId: BuiltValueNullFieldError.checkNotNull(
