@@ -1,3 +1,4 @@
+import 'package:same_boat/src/data/data_update_manager.dart';
 import 'package:same_boat/src/models/internal_user.sg.dart';
 
 abstract class DataAccessType {}
@@ -21,7 +22,9 @@ abstract class DataAccessService {
 }
 
 class _DataAccessServiceImpl implements DataAccessService {
-  _DataAccessServiceImpl();
+  final DataUpdateManager _updateManager;
+
+  _DataAccessServiceImpl(this._updateManager);
 
   @override
   Future<void> addUserToSearchQueue(String userId) {

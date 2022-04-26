@@ -21,7 +21,7 @@ class HomeScreenProvider extends AppChangeNotifier {
   }
 
   Future<void> createBoat(String userId) {
-    return _boatService.createBoat();
+    return _boatService.createBoat(userId);
   }
 
   Future<void> joinBoatQueue(InternalUser user) {

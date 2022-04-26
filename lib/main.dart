@@ -1,22 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:same_boat/src/models/internal_boat.sg.dart';
+import 'package:get_it/get_it.dart';
+
+import 'src/app/app.dart';
+import 'src/app/service_manager.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Example')),
-        body: const Center(
-          child: Text("Beep Boop"),
-        ),
-      ),
-    );
-  }
+  GetIt.I.registerSingleton<ServiceManager>(ServiceManager.create());
+  runApp(const SameBoatApp());
 }

@@ -1,7 +1,7 @@
 import 'package:same_boat/src/data/data_access_service.dart';
 
 abstract class BoatService {
-  Future<void> createBoat();
+  Future<void> createBoat(String userId);
 
   Stream subscribeToBoat(String boatId);
 }
@@ -13,8 +13,8 @@ class BoatServiceImpl implements BoatService {
   BoatServiceImpl(this._writeService, this._subscribeService);
 
   @override
-  Future<void> createBoat() {
-    return _writeService.createBoatForUser('');
+  Future<void> createBoat(String userId) {
+    return _writeService.createBoatForUser(userId);
   }
 
   @override
