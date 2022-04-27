@@ -6,18 +6,15 @@ import 'package:same_boat/src/services/boat_service.dart';
 import 'package:same_boat/src/services/queue_service.dart';
 import 'package:same_boat/src/services/user_service.dart';
 
-import '../app/service_manager.dart';
-
 class HomeScreenProvider extends AppChangeNotifier {
   late final BoatService _boatService;
   late final QueueService _queueService;
   late final UserService _userService;
 
   HomeScreenProvider() : super(ChangeNotifier()) {
-    final serviceManager = GetIt.I.get<ServiceManager>();
-    _boatService = serviceManager.boatService;
-    _queueService = serviceManager.queueService;
-    _userService = serviceManager.userService;
+    _boatService = GetIt.I.get<BoatService>();
+    _queueService = GetIt.I.get<QueueService>();
+    _userService = GetIt.I.get<UserService>();
   }
 
   Future<void> createBoat(String userId) {

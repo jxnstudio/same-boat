@@ -9,9 +9,16 @@ abstract class QueueService {
 }
 
 class QueueServiceImpl implements QueueService {
+  static QueueServiceImpl? _instance;
+
   final WriteService _writeService;
 
-  QueueServiceImpl(this._writeService);
+  QueueServiceImpl._(this._writeService);
+
+  factory QueueServiceImpl(WriteService ws) {
+    _instance ??= QueueServiceImpl._(ws);
+    return _instance!;
+  }
 
   @override
   Future<void> addUserToQueue(InternalUser user) {

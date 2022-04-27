@@ -7,7 +7,7 @@ class AppChangeNotifier implements ChangeNotifier {
 
   AppChangeNotifier(this._changeNotifier);
 
-  final Set<StreamSubscription> _managedSubscriptions = {};
+  final Set<StreamSubscription> _managedStreamSubscriptions = {};
 
   @override
   void addListener(VoidCallback listener) =>
@@ -15,7 +15,7 @@ class AppChangeNotifier implements ChangeNotifier {
 
   @override
   void dispose() {
-    for (final sub in _managedSubscriptions) {
+    for (final sub in _managedStreamSubscriptions) {
       sub.cancel();
     }
 
@@ -33,10 +33,10 @@ class AppChangeNotifier implements ChangeNotifier {
       _changeNotifier.removeListener(listener);
 
   void manageStreamSubscription(StreamSubscription sub) {
-    _managedSubscriptions.add(sub);
+    _managedStreamSubscriptions.add(sub);
   }
 
   void removeFromManaged(StreamSubscription sub) {
-    _managedSubscriptions.remove(sub);
+    _managedStreamSubscriptions.remove(sub);
   }
 }

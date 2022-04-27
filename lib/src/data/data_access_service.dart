@@ -1,4 +1,5 @@
 import 'package:same_boat/src/data/data_update_manager.dart';
+import 'package:same_boat/src/data/model/boat_facade.dart';
 import 'package:same_boat/src/models/internal_user.sg.dart';
 
 abstract class DataAccessType {}
@@ -16,8 +17,8 @@ abstract class DataAccessService {
 
   Stream getQueueUpdateStream(String userId);
 
-  static DataAccessService create() {
-    return _DataAccessServiceImpl();
+  static DataAccessService create(DataUpdateManager updateManager) {
+    return _DataAccessServiceImpl(updateManager);
   }
 }
 
@@ -85,7 +86,8 @@ class WriteServiceImpl implements WriteService {
 
   @override
   Future<void> createBoatForUser(String userId) {
-    return _dataAccessService.createBoatForUser(userId);
+    final boat = BoatFacade.createBoatForUser(userId);
+    return _dataAccessService.createBoatForUser(boat.record);
   }
 
   @override

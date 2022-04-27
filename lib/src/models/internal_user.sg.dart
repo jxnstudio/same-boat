@@ -10,6 +10,12 @@ abstract class InternalUser
 
   InternalUser._();
 
+  Map<String, dynamic> toMap() => {
+        'id': id,
+        'username': username,
+        'pfpId': pfpId,
+      };
+
   factory InternalUser({
     required String id,
     required String userName,

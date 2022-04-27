@@ -19,10 +19,13 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
-      body: Consumer<HomeScreenProvider>(
-        builder: _homeScreenBody,
+    return Provider(
+      create: (_) => HomeScreenProvider(),
+      child: Scaffold(
+        appBar: AppBar(title: const Text('Home')),
+        body: Consumer<HomeScreenProvider>(
+          builder: _homeScreenBody,
+        ),
       ),
     );
   }

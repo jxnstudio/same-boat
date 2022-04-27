@@ -7,11 +7,18 @@ abstract class UserService {
 }
 
 class UserServiceImpl implements UserService {
-  final WriteService _dataService;
-  UserServiceImpl(this._dataService);
+  static UserServiceImpl? _instance;
+
+  final WriteService _writeService;
+  UserServiceImpl._(this._writeService);
+
+  factory UserServiceImpl(WriteService ws) {
+    _instance ??= UserServiceImpl._(ws);
+    return _instance!;
+  }
 
   @override
   Future<void> updateUser(InternalUser user) async {
-    return _dataService.updateUserData(user);
+    return _writeService.updateUserData(user);
   }
 }

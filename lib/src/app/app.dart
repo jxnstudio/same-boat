@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:same_boat/src/providers/home_screen_provider.dart';
 import 'package:same_boat/src/ui/screens/home/home_screen.dart';
 
 class SameBoatApp extends StatelessWidget {
@@ -8,15 +6,8 @@ class SameBoatApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (BuildContext context) => HomeScreenProvider(),
-        ),
-      ],
-      child: MaterialApp(
-        home: HomeScreen(key: key),
-      ),
+    return MaterialApp(
+      home: HomeScreen(key: key),
     );
   }
 }
