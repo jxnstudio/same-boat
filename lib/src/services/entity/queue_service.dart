@@ -1,6 +1,5 @@
-import 'package:same_boat/src/data/data_access_service.dart';
-
-import '../models/internal_user.sg.dart';
+import 'package:same_boat/src/services/data_access_service.dart';
+import 'package:same_boat/src/models/data/internal_user.sg.dart';
 
 abstract class QueueService {
   Future<void> addUserToQueue(InternalUser user);

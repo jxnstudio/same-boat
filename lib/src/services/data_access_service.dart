@@ -1,6 +1,5 @@
 import 'package:same_boat/src/data/data_update_manager.dart';
-import 'package:same_boat/src/data/model/boat_facade.dart';
-import 'package:same_boat/src/models/internal_user.sg.dart';
+import 'package:same_boat/src/models/data/internal_user.sg.dart';
 
 abstract class DataAccessType {}
 
@@ -16,6 +15,8 @@ abstract class DataAccessService {
   Stream getBoatUpdateStream(String boatId);
 
   Stream getQueueUpdateStream(String userId);
+
+  Stream<InternalUser> getActiveUserStream();
 
   static DataAccessService create(DataUpdateManager updateManager) {
     return _DataAccessServiceImpl(updateManager);
@@ -56,10 +57,15 @@ class _DataAccessServiceImpl implements DataAccessService {
   Stream getQueueUpdateStream(String userId) {
     throw Exception();
   }
+
+  @override
+  Stream<InternalUser> getActiveUserStream() async* {
+    yield InternalUser(id: 'user123', userName: 'User', pfpId: 'pfp123');
+  }
 }
 
 abstract class WriteService extends DataAccessType {
-  Future<void> createBoatForUser(String userId);
+  Future<void> createBoatForUser(InternalUser user);
 
   Future<void> addUserToSearchQueue(String userId);
 
@@ -72,6 +78,8 @@ abstract class SubscribeService extends DataAccessType {
   Stream getBoatUpdateStream(String boatId);
 
   Stream getQueueUpdateStream(String userId);
+
+  Stream<InternalUser> getActiveUserUpdateStream();
 }
 
 class WriteServiceImpl implements WriteService {
@@ -85,9 +93,8 @@ class WriteServiceImpl implements WriteService {
   }
 
   @override
-  Future<void> createBoatForUser(String userId) {
-    final boat = BoatFacade.createBoatForUser(userId);
-    return _dataAccessService.createBoatForUser(boat.record);
+  Future<void> createBoatForUser(InternalUser user) {
+    return _dataAccessService.createBoatForUser(user.id);
   }
 
   @override
@@ -114,5 +121,10 @@ class SubscribeServiceImpl implements SubscribeService {
   @override
   Stream getQueueUpdateStream(String userId) {
     return _dataAccessService.getQueueUpdateStream(userId);
+  }
+
+  @override
+  Stream<InternalUser> getActiveUserUpdateStream() {
+    return _dataAccessService.getActiveUserStream();
   }
 }

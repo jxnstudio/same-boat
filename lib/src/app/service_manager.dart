@@ -1,9 +1,8 @@
 import 'package:get_it/get_it.dart';
-import 'package:same_boat/src/data/data_access_service.dart';
-import 'package:same_boat/src/data/data_update_manager.dart';
-import 'package:same_boat/src/services/boat_service.dart';
-import 'package:same_boat/src/services/queue_service.dart';
-import 'package:same_boat/src/services/user_service.dart';
+import 'package:same_boat/src/services/data_access_service.dart';
+import 'package:same_boat/src/services/entity/boat_service.dart';
+import 'package:same_boat/src/services/entity/queue_service.dart';
+import 'package:same_boat/src/services/entity/user_service.dart';
 
 /// Manages the lifecycle for the services layer of the app.
 ///
@@ -38,7 +37,7 @@ class ServiceManager {
     // into the service layer business logic,
     BoatService boatService = BoatServiceImpl(writeService, subscribeService);
     QueueService queueService = QueueServiceImpl(writeService);
-    UserService userService = UserServiceImpl(writeService);
+    UserService userService = UserServiceImpl(writeService, subscribeService);
 
     _instance = ServiceManager._(
       boatService,

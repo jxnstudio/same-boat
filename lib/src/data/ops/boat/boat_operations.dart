@@ -1,5 +1,5 @@
-import 'package:same_boat/src/data/data_access_service.dart';
-import 'package:same_boat/src/models/internal_boat.sg.dart';
+import 'package:same_boat/src/services/data_access_service.dart';
+import 'package:same_boat/src/models/data/internal_boat.sg.dart';
 
 import '../base_operations.dart';
 

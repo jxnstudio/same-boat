@@ -1,4 +1,4 @@
-import '../data_access_service.dart';
+import '../../services/data_access_service.dart';
 
 abstract class Op<T, S extends DataAccessType> {
   T execute(S service);

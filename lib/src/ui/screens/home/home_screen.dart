@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:same_boat/src/providers/home_screen_provider.dart';
+import 'package:same_boat/src/ui/change_notifiers/home_screen_state_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  Widget _homeScreenBody(BuildContext context, HomeScreenProvider provider, _) {
+  Widget _homeScreenBody(
+      BuildContext context, HomeScreenStateModel provider, _) {
     return Column(
       children: [
         ElevatedButton(
@@ -20,10 +21,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Provider(
-      create: (_) => HomeScreenProvider(),
+      create: (_) => HomeScreenStateModel(),
       child: Scaffold(
         appBar: AppBar(title: const Text('Home')),
-        body: Consumer<HomeScreenProvider>(
+        body: Consumer<HomeScreenStateModel>(
           builder: _homeScreenBody,
         ),
       ),

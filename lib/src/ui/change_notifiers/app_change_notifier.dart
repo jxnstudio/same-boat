@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 class AppChangeNotifier implements ChangeNotifier {
-  final ChangeNotifier _changeNotifier;
+  final ChangeNotifier _changeNotifier = ChangeNotifier();
 
-  AppChangeNotifier(this._changeNotifier);
+  AppChangeNotifier();
 
   final Set<StreamSubscription> _managedStreamSubscriptions = {};
 

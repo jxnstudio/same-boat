@@ -1,5 +1,5 @@
-import 'package:get_it/get_it.dart';
-import 'package:same_boat/src/data/data_access_service.dart';
+import 'package:same_boat/src/services/data_access_service.dart';
+import 'package:same_boat/src/models/data/internal_user.sg.dart';
 
 abstract class BoatService {
   Future<void> createBoat(String userId);
@@ -22,7 +22,11 @@ class BoatServiceImpl implements BoatService {
 
   @override
   Future<void> createBoat(String userId) {
-    return _writeService.createBoatForUser(userId);
+    return _writeService.createBoatForUser(InternalUser(
+      id: userId,
+      userName: 'Funny Username',
+      pfpId: 'defaultPfp',
+    ));
   }
 
   @override
