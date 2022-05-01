@@ -1,0 +1,36 @@
+classDiagram
+    class EntityService1 {
+        writeUpdate1(UiWriteServiceContext) Future~void~
+        subscribeGetter1(UiReadServiceContext) Future~Stream~
+        valueGetter1(UiReadServiceContext) Future~T~
+    }
+
+    class EntityService2 {
+        writeUpdate2(UiWriteServiceContext) Future~void~
+        subscribeGetter2(UiReadServiceContext) Future~Stream~
+        valueGetter2(UiReadServiceContext) Future~T~
+    }
+
+    class EntityService3 {
+        writeUpdate3(UiWriteServiceContext) Future~void~
+        subscribeGetter3(UiReadServiceContext) Future~Stream~
+        valueGetter3(UiReadServiceContext) Future~T~
+    }
+
+    class DataAccessService {
+        read(ReadOp) FutureVoid
+        write(WriteOp) FutureVoid
+        subscribe(ReadOp) FutureStream
+    }
+
+    EntityService1 o-- DataAccessService
+    
+    EntityService2 o-- DataAccessService
+
+    EntityService3 o-- DataAccessService
+
+    class TxDataService {
+
+    }
+
+    DataAccessService o-- TxDataService
