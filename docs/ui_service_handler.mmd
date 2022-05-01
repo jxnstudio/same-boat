@@ -1,0 +1,26 @@
+classDiagram
+    class UiServiceHandler {
+        <<interface>>
+        +newServiceContext() UiServiceContext
+    }
+
+    class UiWriteServiceHandler {
+        entityService1 : EntityService1
+        entityService2 : EntityService2
+        entityService3 : EntityService3
+        
+        inputActionFromWidget(BasicData) void
+    }
+
+    class UiReadServiceHandler {
+        entityService1 : EntityService1
+        entityService2 : EntityService2
+        entityService3 : EntityService3
+
+        getUpdateStreamData() Stream~T~
+        getOneOffData() Stream~T~
+    }
+
+    UiServiceHandler <|-- UiReadServiceHandler
+
+    UiServiceHandler <|-- UiWriteServiceHandler
