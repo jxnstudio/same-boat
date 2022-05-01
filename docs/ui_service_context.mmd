@@ -1,0 +1,16 @@
+classDiagram
+    class UiServiceContext{
+    <<interface>>
+    
+    +userId : String
+    +cid : String
+    }
+    class UiReadServiceContext {
+        getReaderHasClosed() boolean
+        onReaderClose(void Function())
+    }
+
+    class UiWriteServiceContext
+    
+    UiServiceContext <|-- UiWriteServiceContext
+    UiServiceContext <|-- UiReadServiceContext
